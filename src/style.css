@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0B0B0D;
+    color: #ECECEC;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background: #101214;
+    color: #B20F1A;
+    padding: 20px 30px;
+    text-align: left;
+}
+
+#main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 80%;
+    padding: 1rem;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background: #101214;
+}
+
+#side-bar {
+    max-width: 20%;
+    min-width: 220px;
+    height: 100%;
+    border-right: 2px solid #6B6F73;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#project-tab {
+    height: 100%;
+    background: #444444;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    border: #6B6F73 2px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: min-content;
+}
+
+.project-tab-header {
+    color: #B20F1A;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #6B6F73;
+}
+
+#add-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: #C99A3D;
+    color: #ECECEC;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    font-size: 3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0.6rem;
+    user-select: none;
+}
+
+#add-button:hover {
+    background: #C99A3De0;
+}
+
+#add-button:active {
+    background: #C99A3Db0;
+}
+
+.add-form-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #444444;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 420px;
+}
+
+.add-form-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-form-nav {
+    flex: 1;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2rem;
+    border: 2px solid grey;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.add-form-nav div:first-child {
+    border-right: 2px solid grey;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.add-form-nav div:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.add-form-nav div {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+
+.add-form-nav div:hover {
+    background: #555555;
+}
+
+.add-form-content {
+    padding: 12px;
+}
+
+.form-exit {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: start;
+}
+
+.form-exit:hover {
+    color: #ff4c4c;
+}
+
+#content {
+    width: 80%;
+    height: 100%;
+}
+
+#side-bar,
+#content {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding: 20px;
+}
+
+#todo-tab {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.todo-tab-header {
+    color: #B20F1A;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #6B6F73;
+}
+
+.add-project-form, .add-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-name-field-wrapper, .title-field-wrapper, .description-field-wrapper, .dueDate-field-wrapper, .priority-field-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input[type="text"], input[type="date"], select, textarea {
+    flex: 5;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background: #555555;
+    color: #ffffff;
+}
+
+input:active, select:active, textarea:active,
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #FF5A2A;
+}
+
+label {
+    flex: 2;
+    font-weight: bold;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+    max-height: 200px;
+}
+
+.submit-button-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: end;
+}
+
+#submit-button {
+    background: #C99A3D;
+    color: #ECECEC;
+    border: none;
+    padding: 0.25rem 1rem 0.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-label-div {
+    background: #555555;
+    color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+}
+
+.project-label-div label {
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+.project-label-div:hover {
+    background: #666666;
+}
+
+.active-project-field-wrapper {
+    border: 2px solid #FF5A2A;
+    box-shadow: 0 0 10px #FF5A2A;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.todo-tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}   
+
+.todo-view-div {
+    background: #555555;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.todo-title-card {
+    flex: 1;
+    font-size: 1.2rem;
+    font-weight: bold;
+    align-self: center;
+}
+.todo-description-card {
+    flex: 4;
+    align-self: center;
+}
+.todo-due-date-card {
+    flex: 2;
+    align-self: center;
+    text-align: center;
+}
+.todo-priority-card {
+    flex: 1;
+    align-self: center;
+    text-align: center;
+}
+.todo-status-card {
+    flex: 1;
+    align-self: center;
+    text-align: center;
+    user-select: none;
+}
+.todo-delete-card {
+    flex: 0.5;
+    align-self: center;
+    text-align: center;
+    background: #ff4c4c;
+    border: none;
+    color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}   
