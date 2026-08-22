@@ -3,10 +3,10 @@ function createHeaderNav() {
     headerNav.classList.add("add-form-nav");
     const projectTab = document.createElement("div");
     projectTab.setAttribute("id", "project-tab-button")
-    projectTab.innerHTML = "Chapter";
+    projectTab.innerHTML = "Project";
     const todoTab = document.createElement("div");
     todoTab.setAttribute("id", "todo-tab-button")
-    todoTab.innerHTML = "Order";
+    todoTab.innerHTML = "Task";
 
     headerNav.appendChild(projectTab);
     headerNav.appendChild(todoTab);

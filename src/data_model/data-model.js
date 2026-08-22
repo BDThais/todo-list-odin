@@ -119,46 +119,56 @@ class TodoModelHandler {
         this.storeToLocal();
     }
     storeToLocal() {
-        localStorage.clear();
         localStorage.setItem("projectList", JSON.stringify(this.projectList));
     }
     parseLocalData() {
         return JSON.parse(localStorage.getItem("projectList"));
     }
+    resetCompletedTodos(projectList) {
+        projectList.forEach((project) => {
+            project.todos.forEach((todo) => {
+                todo.isCompleted = false;
+            });
+        });
+    }
     initializeData() {
         const initalList = { "projectList": 
-            [{"name":"Iron Castellans",
-                "todos":[{"title":"Establish Forward Base","description":"Set up HQ, comms tower and field kitchens.","dueDate":"2025-10-23","priority":"🐯Average","isCompleted":true},
-                        {"title":"Fortify Perimeter","description":"Emplace barricades & automated turrets.","dueDate":"2025-10-24","priority":"🐯Average","isCompleted":true},
-                        {"title":"Secure Supply Convoy","description":"Escort food/ammo convoy (awaiting intel).","dueDate":"2025-10-24","priority":"🐯Average","isCompleted":false},
-                        {"title":"Purge the Hive-Spire","description":"Total eradication of bio-brood nests within Hive-Spire 7.","dueDate":"2025-10-31","priority":"👽Lethal","isCompleted":true},
-                        {"title":"Exterminate Heretic Cult","description":"Root out cult cells; no prisoners if they resist.","dueDate":"2025-10-30","priority":"😈Ruthless","isCompleted":false}]},
-            {"name":"Void Reavers",
-                "todos":[{"title":"Chart Warp Route","description":"Calculate safe warp windows and contingencies.","dueDate":"2025-10-30","priority":"🐯Average","isCompleted":true},
-                        {"title":"Sweep Pirate Signals","description":"Signal jamming and flare patterns — awaiting review.","dueDate":"2025-10-31","priority":"🐯Average","isCompleted":true},
-                        {"title":"Sabotage Warp Anchor","description":"Disable anchor to strand enemy fleet in realspace.","dueDate":"2025-11-23","priority":"😈Ruthless","isCompleted":true},
-                        {"title":"Board Raider Cruiser","description":"Close-quarters boarding, capture bridge and navigator.","dueDate":"2025-12-17","priority":"👽Lethal","isCompleted":false}]},
-            {"name":"Black Talon",
-                "todos":[{"title":"Ambush Convoy at Red Pass","description":"High-casualty interception in narrow canyon.","dueDate":"2025-11-04","priority":"👽Lethal","isCompleted":true},
-                        {"title":"Psychic Nullification Sweep","description":"Sweep sector for latent psychic nodes and erase them.","dueDate":"2025-12-01","priority":"😈Ruthless","isCompleted":true},
-                        {"title":"Destroy Xenos Nestclutch","description":"Complete eradication, remove taint from region","dueDate":"2025-12-30","priority":"☠️Absolute","isCompleted":false}]}] 
+            [{"name":"Personal",
+                "todos":[{"title":"Buy groceries","description":"Pick up vegetables, bread, milk, and coffee for the week.","dueDate":"2026-08-23","priority":"Low","isCompleted":false},
+                    {"title":"Schedule dentist appointment","description":"Call the dentist and arrange a routine cleaning.","dueDate":"2026-08-24","priority":"High","isCompleted":false},
+                    {"title":"Organize bedroom closet","description":"Sort clothes and donate items that are no longer needed.","dueDate":"Daily","priority":"Low","isCompleted":false}]},
+            {"name":"Work",
+                "todos":[{"title":"Finish project report","description":"Complete the summary and send it to the team for review.","dueDate":"2026-08-25","priority":"High","isCompleted":false},
+                    {"title":"Reply to client emails","description":"Respond to the outstanding questions in the project inbox.","dueDate":"2026-08-23","priority":"Urgent","isCompleted":false},
+                    {"title":"Prepare weekly meeting notes","description":"Collect updates and prepare the agenda for Monday's meeting.","dueDate":"2026-08-30","priority":"Low","isCompleted":false}]},
+            {"name":"Home",
+                "todos":[{"title":"Clean the kitchen","description":"Wipe the counters, clean the sink, and mop the floor.","dueDate":"2026-08-23","priority":"Low","isCompleted":false},
+                    {"title":"Pay utility bills","description":"Review and pay the electricity and internet bills.","dueDate":"2026-08-26","priority":"High","isCompleted":false},
+                        {"title":"Water the plants","description":"Check each plant and water the ones with dry soil.","dueDate":"Daily","priority":"Low","isCompleted":false}]}]
         };
 
-        if (localStorage.getItem("projectList") === null || localStorage.getItem("projectList") === "[]") { 
-            this.loadDataToList(initalList.projectList); 
+        const currentDate = (new Date()).toLocaleDateString("sv-SE");
+        const isNewDay = localStorage.getItem("todoLastResetDate") !== currentDate;
+        const savedProjects = localStorage.getItem("projectList");
+        const projectList = savedProjects === null || savedProjects === "[]"
+            ? initalList.projectList
+            : this.parseLocalData();
+
+        if (isNewDay) {
+            this.resetCompletedTodos(projectList);
         }
-        else { 
-            this.loadDataToList(this.parseLocalData()) 
-        }
+
+        this.loadDataToList(projectList);
+        localStorage.setItem("todoLastResetDate", currentDate);
     }
 }
 
 class Todo {
     constructor(todoObj, nameList) {
-        this.title = todoObj[nameList[0]];
-        this.description = todoObj[nameList[1]];
-        this.dueDate = todoObj[nameList[2]];
-        this.priority = todoObj[nameList[3]];
+        this.title = todoObj.title;
+        this.description = todoObj.description;
+        this.dueDate = todoObj.dueDateMode === "Daily" ? "Daily" : todoObj.dueDate;
+        this.priority = todoObj.priority;
         if (todoObj.isCompleted === undefined) { this.isCompleted = false; }
         else { this.isCompleted = todoObj.isCompleted }
     }

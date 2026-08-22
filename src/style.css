@@ -6,8 +6,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0B0B0D;
-    color: #ECECEC;
+    background-color: #eaeaec;
+    color: #313131;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
@@ -15,8 +15,8 @@ body {
 }
 
 header {
-    background: #101214;
-    color: #B20F1A;
+    background: #42a6f8;
+    color: #fdfcfd;
     padding: 20px 30px;
     text-align: left;
 }
@@ -39,14 +39,14 @@ header {
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    background: #101214;
+    background: #c4c4c486;
 }
 
 #side-bar {
     max-width: 20%;
     min-width: 220px;
     height: 100%;
-    border-right: 2px solid #6B6F73;
+    border-right: 2px solid #6b6f7391;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -55,10 +55,10 @@ header {
 
 #project-tab {
     height: 100%;
-    background: #444444;
+    background: #e9e8e8;
     border-radius: 8px;
     padding: 0.5rem 1rem;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: thin;
     border: #6B6F73 2px solid;
     display: flex;
@@ -68,18 +68,18 @@ header {
 }
 
 .project-tab-header {
-    color: #B20F1A;
+    color: #01b7ff;
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
-    border-bottom: 2px solid #6B6F73;
+    border-bottom: 2px solid #6b6f7377;
 }
 
 #add-button {
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background: #C99A3D;
+    background: #0246ff;
     color: #ECECEC;
     border-radius: 50%;
     width: 3rem;
@@ -95,11 +95,11 @@ header {
 }
 
 #add-button:hover {
-    background: #C99A3De0;
+    background: #013c94;
 }
 
 #add-button:active {
-    background: #C99A3Db0;
+    background: #012f6b;
 }
 
 .add-form-div {
@@ -107,7 +107,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #444444;
+    background: #cfcfcfc5;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -132,13 +132,13 @@ header {
     align-items: center;
     justify-content: center;
     margin: 0 2rem;
-    border: 2px solid grey;
+    border: 2px solid rgba(128, 128, 128, 0.568);
     border-radius: 20px;
     cursor: pointer;
 }
 
 .add-form-nav div:first-child {
-    border-right: 2px solid grey;
+    border-right: 2px solid rgba(128, 128, 128, 0.507);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -156,7 +156,7 @@ header {
 }
 
 .add-form-nav div:hover {
-    background: #555555;
+    background: #807f7f83;
 }
 
 .add-form-content {
@@ -166,7 +166,7 @@ header {
 .form-exit {
     background: transparent;
     border: none;
-    color: white;
+    color: rgba(255, 67, 67, 0.842);
     font-size: 1.5rem;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -175,7 +175,7 @@ header {
 }
 
 .form-exit:hover {
-    color: #ff4c4c;
+    color: #ff0505;
 }
 
 #content {
@@ -197,7 +197,7 @@ header {
 }
 
 .todo-tab-header {
-    color: #B20F1A;
+    color: #01b7ff;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
@@ -231,7 +231,7 @@ input[type="text"], input[type="date"], select, textarea {
 input:active, select:active, textarea:active,
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #FF5A2A;
+    border-color: #0496f8ee;
 }
 
 label {
@@ -252,7 +252,7 @@ textarea {
 }
 
 #submit-button {
-    background: #C99A3D;
+    background: #0099ff;
     color: #ECECEC;
     border: none;
     padding: 0.25rem 1rem 0.5rem;
@@ -269,7 +269,7 @@ textarea {
 }
 
 .project-label-div {
-    background: #555555;
+    background: #494949c9;
     color: #ffffff;
     padding: 0.5rem;
     border-radius: 4px;
@@ -289,8 +289,8 @@ textarea {
 }
 
 .active-project-field-wrapper {
-    border: 2px solid #FF5A2A;
-    box-shadow: 0 0 10px #FF5A2A;
+    border: 2px solid #00aeff;
+    box-shadow: 0 0 10px #00aeff;
     padding: 0.5rem;
     border-radius: 4px;
     text-align: center;
@@ -303,13 +303,19 @@ textarea {
 }   
 
 .todo-view-div {
-    background: #555555;
+    background: #ebeaeacb;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+}
+
+.todo-view-div.todo-completed {
+    filter: grayscale(1);
+    opacity: 0.55;
+    order: 1;
 }
 
 .todo-title-card {
@@ -333,19 +339,136 @@ textarea {
     text-align: center;
 }
 .todo-status-card {
+    cursor: pointer;
+    font-size: 1.5rem;
     flex: 1;
     align-self: center;
     text-align: center;
     user-select: none;
 }
 .todo-delete-card {
-    flex: 0.5;
+    flex: 0.1;
     align-self: center;
     text-align: center;
-    background: #ff4c4c;
+    background: #f700009c;
     border: none;
     color: #ffffff;
     padding: 0.5rem;
     border-radius: 4px;
     cursor: pointer;
-}   
+}
+
+@media (max-width: 700px) {
+    body {
+        min-height: 100vh;
+        height: auto;
+    }
+
+    header {
+        padding: 16px 20px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    #main-container {
+        display: block;
+        padding: 1rem 0;
+    }
+
+    #main {
+        width: calc(100% - 1rem);
+        height: auto;
+        min-height: calc(100vh - 7rem);
+        padding: 0.75rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #side-bar,
+    #content {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        height: auto;
+        padding: 0.5rem;
+        overflow: visible;
+    }
+
+    #side-bar {
+        border-right: none;
+        border-bottom: 2px solid #6b6f7391;
+        padding-bottom: 1rem;
+    }
+
+    #project-tab {
+        height: auto;
+        max-height: 35vh;
+        min-width: 0;
+    }
+
+    .add-form-div {
+        width: calc(100vw - 2rem);
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+    }
+
+    .add-form-nav {
+        margin: 0 0.5rem;
+        font-size: 1rem;
+    }
+
+    .project-name-field-wrapper,
+    .title-field-wrapper,
+    .description-field-wrapper,
+    .dueDate-field-wrapper,
+    .priority-field-wrapper {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+        width: 100%;
+        min-height: 2.75rem;
+    }
+
+    .todo-view-div {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .todo-title-card,
+    .todo-description-card,
+    .todo-due-date-card,
+    .todo-priority-card,
+    .todo-status-card,
+    .todo-delete-card {
+        flex: none;
+        align-self: stretch;
+        text-align: left;
+    }
+
+    .todo-title-card {
+        font-size: 1.1rem;
+    }
+
+    .todo-status-card,
+    .todo-delete-card {
+        text-align: center;
+        min-height: 2.75rem;
+    }
+
+    #add-button {
+        position: sticky;
+        align-self: flex-end;
+        bottom: 1rem;
+        right: auto;
+        margin: 0 0.5rem 0.5rem 0;
+    }
+}
