@@ -58,22 +58,39 @@ function createDateInputField(label, objName) {
     const fieldWrapper = document.createElement("div");
     fieldWrapper.classList.add(`${objName}-field-wrapper`);
     const newLabel = document.createElement("label");
-    const newInput = document.createElement("input");
+    const dateMode = document.createElement("select");
+    const dailyOption = createSelectOption("Daily");
+    const dateOption = createSelectOption("Specific date");
+    const dateInput = document.createElement("input");
 
-    newLabel.setAttribute("for", objName);
-    newInput.setAttribute("type", "date");
-    newInput.setAttribute("name", objName);
-    newInput.setAttribute("id", objName);
+    newLabel.setAttribute("for", `${objName}-mode`);
+    dateMode.setAttribute("name", `${objName}Mode`);
+    dateMode.setAttribute("id", `${objName}-mode`);
+    dateMode.appendChild(dailyOption);
+    dateMode.appendChild(dateOption);
+    dateOption.setAttribute("selected", true);
+
+    dateInput.setAttribute("type", "date");
+    dateInput.setAttribute("name", objName);
+    dateInput.setAttribute("id", objName);
 
     //date form validation
-    newInput.setAttribute("value", todayDate);
-    newInput.setAttribute("min", todayDate);
+    dateInput.setAttribute("value", todayDate);
+    dateInput.setAttribute("min", todayDate);
+    dateInput.setAttribute("required", true);
     //end
 
     newLabel.innerHTML = label;
 
     fieldWrapper.appendChild(newLabel);
-    fieldWrapper.appendChild(newInput);
+    fieldWrapper.appendChild(dateMode);
+    fieldWrapper.appendChild(dateInput);
+
+    dateMode.addEventListener("change", () => {
+        const isDaily = dateMode.value === "Daily";
+        dateInput.disabled = isDaily;
+        dateInput.required = !isDaily;
+    });
 
     return fieldWrapper;
 }
@@ -103,14 +120,14 @@ function createPrioritySelectionField(label, objName) {
     newInput.setAttribute("id", objName);
     newLabel.innerHTML = label;
 
-    const veryHigh = createSelectOption("☠️Absolute")
-    const highPrio = createSelectOption("👽Lethal");
-    const medPrio = createSelectOption("😈Ruthless");
-    const lowPrio = createSelectOption("🐯Average");
+    const urgentPrio = createSelectOption("Urgent");
+    const highPrio = createSelectOption("High");
+    const medPrio = createSelectOption("Medium");
+    const lowPrio = createSelectOption("Low");
 
     lowPrio.setAttribute("selected", true);
 
-    newInput.appendChild(veryHigh);
+    newInput.appendChild(urgentPrio);
     newInput.appendChild(highPrio);
     newInput.appendChild(medPrio);
     newInput.appendChild(lowPrio);
@@ -125,7 +142,7 @@ function generateActiveProjectContent(projectName) {
     const fieldWrapper = document.createElement("div");
     fieldWrapper.classList.add(`active-project-field-wrapper`);
     const newLabel = document.createElement("label");
-    newLabel.textContent = `Current Active Chapter: ${projectName}`;
+    newLabel.textContent = `Current Active Project: ${projectName}`;
     fieldWrapper.appendChild(newLabel);
     return { fieldWrapper, newLabel };
 }

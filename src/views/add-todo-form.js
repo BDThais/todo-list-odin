@@ -4,7 +4,7 @@ import { activeProject } from "../controllers/active-project-handler";
 import { activeProjField } from "./form-display-components";
 import { createActiveProjectField } from "./form-display-components";
 
-const nameList = ["title","description","dueDate","priority"];
+const nameList = ["title","description","dueDate","priority","dueDateMode"];
 
 function createTodoTab() {
     const tabName = "todo";
@@ -18,7 +18,7 @@ function createTodoTab() {
     const titleField = FormDisplay.createTextInputField("Title", nameList[0]);
     const descField = FormDisplay.createTextAreaField("Description", nameList[1]);
     const dateField = FormDisplay.createDateInputField("Due Date", nameList[2]);
-    const prioField = FormDisplay.createPrioritySelectionField("Difficulty", nameList[3]);
+    const prioField = FormDisplay.createPrioritySelectionField("Priority", nameList[3]);
 
     activeProjField.fieldWrapper = createActiveProjectField(activeProject.getCurrentActive().name).fieldWrapper;
     activeProjField.newLabel.textContent = activeProject.getCurrentActive().name;

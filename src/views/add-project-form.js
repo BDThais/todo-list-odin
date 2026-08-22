@@ -11,7 +11,7 @@ function createProjectTab() {
     formElement.classList.add("add-project-form");
     //formElement.setAttribute("method", "POST");
     const nameList = ["project-name"]
-    const nameField = FormDisplay.createTextInputField("Chapter Name", nameList[0]);
+    const nameField = FormDisplay.createTextInputField("Project Name", nameList[0]);
 
     const submitDiv = FormDisplay.createSubmitButton();
 

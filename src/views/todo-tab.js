@@ -1,11 +1,11 @@
 import { projectTab } from "../data_model/data-model";
 
-function updateStatusView(status) {
-    if (status) {return "🟢";}
-    else if (!status) {return "🔴";}
-}
-
 function createTodoDiv(todo) {
+    function updateStatusView(status) {
+    if (status) {return "☑";}
+    else if (!status) {return "☐";}
+    }
+
     const todoDiv = document.createElement('div');
     const title = document.createElement('div');
     const description = document.createElement('div');
@@ -26,7 +26,7 @@ function createTodoDiv(todo) {
     title.textContent = todo.title;
     description.textContent = todo.description;
     dueDate.textContent = `Due Date: ${todo.dueDate}`;
-    priority.textContent = `Difficulty: ${todo.priority}`;
+    priority.textContent = `Priority: ${todo.priority}`;
     status.textContent = updateStatusView(todo.isCompleted);
     deleteButton.textContent = "🗑️";
 
@@ -36,6 +36,10 @@ function createTodoDiv(todo) {
     todoDiv.appendChild(priority);
     todoDiv.appendChild(status);
     todoDiv.appendChild(deleteButton);
+
+    if (todo.isCompleted) {
+        todoDiv.classList.add("todo-completed");
+    }
 
     return { todoDiv, deleteButton, status };
 }
@@ -54,4 +58,4 @@ function updateTodoTab() {
     }
 }
 
-export { updateTodoTab, }
+export { updateTodoTab }
