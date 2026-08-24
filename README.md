@@ -22,7 +22,7 @@ The app uses these `localStorage` entries:
 - `projectList`: serialized projects and their todo tasks
 - `todoLastResetDate`: the last calendar date on which completed tasks were reset
 
-Completed tasks are reset to `isCompleted: false` when the app is opened on a new local calendar day. The reset is based on the day changing, not on the time an individual task was completed.
+Completed tasks with due date = "Daily" are reset to `isCompleted: false` when the app is opened on a new local calendar day. The reset is based on the day changing, not on the time an individual task was completed.
 
 When `projectList` is empty, the app loads example personal, work, and home tasks as seed data. Existing local data is not replaced by the seed data.
 

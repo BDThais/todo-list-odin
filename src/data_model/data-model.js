@@ -126,8 +126,14 @@ class TodoModelHandler {
     }
     resetCompletedTodos(projectList) {
         projectList.forEach((project) => {
-            project.todos.forEach((todo) => {
-                todo.isCompleted = false;
+            project.todos = project.todos.filter((todo) => {
+                if (todo.isCompleted && todo.dueDate !== "Daily") {
+                    return false;
+                }
+                if (todo.isCompleted && todo.dueDate === "Daily") {
+                    todo.isCompleted = false;
+                }
+                return true;
             });
         });
     }
