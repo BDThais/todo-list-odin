@@ -49,7 +49,9 @@ function updateTodoTab() {
     todoTabContent.innerHTML = "";
 
     if (projectTab.getTodo() !== false) {
-        projectTab.getTodo().forEach(element => {
+        const sortedTodos = [...projectTab.getTodo()].sort((a, b) => Number(a.isCompleted) - Number(b.isCompleted));
+
+        sortedTodos.forEach(element => {
             const todo = createTodoDiv(element);
             todo.deleteButton.addEventListener("click", () => projectTab.deleteTodo(element));
             todo.status.addEventListener("click", () => projectTab.changeTodoStatus(element));

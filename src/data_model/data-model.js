@@ -147,7 +147,7 @@ class TodoModelHandler {
                 "todos":[{"title":"Finish project report","description":"Complete the summary and send it to the team for review.","dueDate":"2026-08-25","priority":"High","isCompleted":false},
                     {"title":"Reply to client emails","description":"Respond to the outstanding questions in the project inbox.","dueDate":"2026-08-23","priority":"Urgent","isCompleted":false},
                     {"title":"Prepare weekly meeting notes","description":"Collect updates and prepare the agenda for Monday's meeting.","dueDate":"2026-08-30","priority":"Low","isCompleted":false}]},
-            {"name":"Home",
+            {"name":"Home Chores",
                 "todos":[{"title":"Clean the kitchen","description":"Wipe the counters, clean the sink, and mop the floor.","dueDate":"2026-08-23","priority":"Low","isCompleted":false},
                     {"title":"Pay utility bills","description":"Review and pay the electricity and internet bills.","dueDate":"2026-08-26","priority":"High","isCompleted":false},
                         {"title":"Water the plants","description":"Check each plant and water the ones with dry soil.","dueDate":"Daily","priority":"Low","isCompleted":false}]}]

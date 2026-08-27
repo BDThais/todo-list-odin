@@ -9,16 +9,24 @@ function createProjectDiv(project) {
     deleteButton.textContent = '🗑️';
 
     projectDiv.classList.add("project-label-div");
+    if (activeProject.getCurrentActive() === project) {
+        projectDiv.classList.add("active-project-field-wrapper");
+    }
     deleteButton.setAttribute('type', 'button');
 
     projectDiv.appendChild(projectLabel);
     projectDiv.appendChild(deleteButton);
 
-    projectLabel.addEventListener("click", () => {
-        return activeProject.updateActiveProject(project);
-    })
+    projectDiv.addEventListener("click", (event) => {
+        if (event.target !== deleteButton) {
+            activeProject.updateActiveProject(project);
+        }
+    });
 
-    deleteButton.addEventListener("click", () => projectTab.deleteProject(project))
+    deleteButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        projectTab.deleteProject(project);
+    });
 
     return projectDiv;
 }
