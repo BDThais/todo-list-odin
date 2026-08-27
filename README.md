@@ -4,8 +4,8 @@ A simple todo list application built with vanilla JavaScript. This project was c
 
 ## Features
 
-- Create and delete projects
-- Add, complete, and delete todo tasks
+- Create, edit, and delete projects
+- Add, edit, complete, and delete todo tasks
 - Set a task priority: Low, Medium, High, or Urgent
 - Set a due date or make a task Daily
 - Move completed tasks to the bottom of the list

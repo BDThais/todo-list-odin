@@ -232,7 +232,7 @@ header h1 {
 
 .todo-view-div {
     display: grid;
-    grid-template-columns: 1.3fr 2.2fr 1.1fr 0.8fr 0.7fr 0.6fr;
+    grid-template-columns: 1.3fr 2.2fr 1.1fr 0.8fr 0.7fr 0.6fr 0.6fr;
     align-items: center;
     gap: 0.8rem;
     background: linear-gradient(180deg, rgba(148, 163, 184, 0.06), rgba(15, 23, 42, 0.4));
@@ -304,7 +304,8 @@ header h1 {
     border: 1px solid rgba(94, 234, 212, 0.25);
 }
 
-.todo-delete-card {
+.todo-delete-card,
+.todo-edit-card {
     justify-self: center;
     width: 36px;
     height: 36px;
@@ -556,4 +557,9 @@ textarea {
         right: 20px;
         bottom: 18px;
     }
+}
+
+.todo-edit-card {
+    background: rgba(96, 165, 250, 0.12);
+    color: #bfdbfe;
 }

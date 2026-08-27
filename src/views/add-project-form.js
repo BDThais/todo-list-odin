@@ -1,7 +1,7 @@
 import { FormDisplay } from "./DOMView";
 import { projectDataExtraction } from "../controllers/form-submit-controller";
 
-function createProjectTab() {
+function createProjectTab(editTarget) {
     const tabName = "project";
     const dataExtract = projectDataExtraction;
     const projectTab = document.createElement("div");
@@ -12,6 +12,9 @@ function createProjectTab() {
     //formElement.setAttribute("method", "POST");
     const nameList = ["project-name"]
     const nameField = FormDisplay.createTextInputField("Project Name", nameList[0]);
+    if (editTarget) {
+        nameField.querySelector("input").value = editTarget.name;
+    }
 
     const submitDiv = FormDisplay.createSubmitButton();
 
@@ -19,7 +22,7 @@ function createProjectTab() {
     formElement.appendChild(submitDiv.submitButtonDiv);
     projectTab.appendChild(formElement);
 
-    return { projectTab, formElement, tabName, submitDiv, nameList, dataExtract };
+    return { projectTab, formElement, tabName, submitDiv, nameList, dataExtract, editTarget };
 }
 
 export { createProjectTab };

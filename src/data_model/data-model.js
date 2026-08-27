@@ -33,9 +33,23 @@ class TodoModelHandler {
             activeProject.updateActiveProject(project);
             updateProjectTab();
             this.storeToLocal();
+            return true;
         }
         else { alert("Projects can't have identical name!"); }
+        return false;
+    }
+    updateProject(project, name) {
+        const duplicate = this.projectList.some((element) => element !== project && element.name === name);
+        if (duplicate) {
+            alert("Projects can't have identical name!");
+            return false;
+        }
 
+        project.name = name;
+        updateProjectTab();
+        updateTodoTab();
+        this.storeToLocal();
+        return true;
     }
     deleteProject(project) {
         if (this.projectList.length === 1) { activeProject.set0ActiveProject() }
@@ -67,10 +81,26 @@ class TodoModelHandler {
                 this.projectList[activeProject.getCurrentActiveIndex()].todos.push(todo);
                 updateTodoTab();
                 this.storeToLocal();
+                return true;
             }
             else { alert("Todo can't have the same title") }
         }
+        return false;
+    }
+    updateTodo(todo, todoData) {
+        const duplicate = this.getTodo().some((element) => element !== todo && element.title === todoData.title);
+        if (duplicate) {
+            alert("Todo can't have the same title");
+            return false;
+        }
 
+        todo.title = todoData.title;
+        todo.description = todoData.description;
+        todo.dueDate = todoData.dueDateMode === "Daily" ? "Daily" : todoData.dueDate;
+        todo.priority = todoData.priority;
+        updateTodoTab();
+        this.storeToLocal();
+        return true;
     }
     deleteTodo(todo) {
         this.getTodo().forEach((element, index) => {

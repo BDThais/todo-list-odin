@@ -1,4 +1,5 @@
 import { projectTab } from "../data_model/data-model";
+import { initEditForm } from "../controllers/init-edit-form";
 
 function createTodoDiv(todo) {
     function updateStatusView(status) {
@@ -12,6 +13,7 @@ function createTodoDiv(todo) {
     const dueDate = document.createElement('div');
     const priority = document.createElement('div');
     const status = document.createElement('div');
+    const editButton = document.createElement('button');
     const deleteButton = document.createElement('button');
 
     todoDiv.classList.add("todo-view-div");
@@ -21,6 +23,7 @@ function createTodoDiv(todo) {
     priority.classList.add("todo-priority-card");
     status.classList.add("todo-status-card");
     deleteButton.classList.add("todo-delete-card");
+    editButton.classList.add("todo-edit-card");
     deleteButton.setAttribute("type", "button");
 
     title.textContent = todo.title;
@@ -29,19 +32,21 @@ function createTodoDiv(todo) {
     priority.textContent = `Priority: ${todo.priority}`;
     status.textContent = updateStatusView(todo.isCompleted);
     deleteButton.textContent = "🗑️";
+    editButton.textContent = "✎";
 
     todoDiv.appendChild(title);
     todoDiv.appendChild(description);
     todoDiv.appendChild(dueDate);
     todoDiv.appendChild(priority);
     todoDiv.appendChild(status);
+    todoDiv.appendChild(editButton);
     todoDiv.appendChild(deleteButton);
 
     if (todo.isCompleted) {
         todoDiv.classList.add("todo-completed");
     }
 
-    return { todoDiv, deleteButton, status };
+    return { todoDiv, deleteButton, editButton, status };
 }
 
 function updateTodoTab() {
@@ -54,6 +59,7 @@ function updateTodoTab() {
         sortedTodos.forEach(element => {
             const todo = createTodoDiv(element);
             todo.deleteButton.addEventListener("click", () => projectTab.deleteTodo(element));
+            todo.editButton.addEventListener("click", () => initEditForm("todo", element));
             todo.status.addEventListener("click", () => projectTab.changeTodoStatus(element));
             todoTabContent.appendChild(todo.todoDiv);
         });

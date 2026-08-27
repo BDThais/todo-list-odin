@@ -9,15 +9,15 @@ function getActiveTab() {
     else { return false }
 }
 
-function initProjectTab(content) {
-    activeTab = createProjectTab();
+function initProjectTab(content, editTarget) {
+    activeTab = createProjectTab(editTarget);
     assignSubmitEvent(activeTab);
     content.innerHTML = "";
     content.appendChild(activeTab.projectTab);
 }
 
-function initTodoTab(content) {
-    activeTab = createTodoTab();
+function initTodoTab(content, editTarget) {
+    activeTab = createTodoTab(editTarget);
     assignSubmitEvent(activeTab);
     content.innerHTML = "";
     content.appendChild(activeTab.todoTab);

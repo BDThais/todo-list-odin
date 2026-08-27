@@ -1,26 +1,36 @@
 import { projectTab } from "../data_model/data-model";
 import { activeProject } from "../controllers/active-project-handler";
+import { initEditForm } from "../controllers/init-edit-form";
 
 function createProjectDiv(project) {
     const projectDiv = document.createElement('div');
     const projectLabel = document.createElement('label');
+    const editButton = document.createElement('button');
     const deleteButton = document.createElement('button');
     projectLabel.textContent = project.name;
     deleteButton.textContent = '🗑️';
+    editButton.textContent = '✎';
 
     projectDiv.classList.add("project-label-div");
     if (activeProject.getCurrentActive() === project) {
         projectDiv.classList.add("active-project-field-wrapper");
     }
     deleteButton.setAttribute('type', 'button');
+    editButton.setAttribute('type', 'button');
 
     projectDiv.appendChild(projectLabel);
+    projectDiv.appendChild(editButton);
     projectDiv.appendChild(deleteButton);
 
     projectDiv.addEventListener("click", (event) => {
-        if (event.target !== deleteButton) {
+        if (event.target !== deleteButton && event.target !== editButton) {
             activeProject.updateActiveProject(project);
         }
+    });
+
+    editButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        initEditForm("project", project);
     });
 
     deleteButton.addEventListener("click", (event) => {
