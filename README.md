@@ -2,6 +2,9 @@
 
 A simple todo list application built with vanilla JavaScript. This project was created while learning JavaScript, so it does not use a frontend framework. The interface is built with standard DOM APIs and bundled with webpack.
 
+![Main menu](imgs/main.png)
+
+
 ## Features
 
 - Create, edit, and delete projects
@@ -12,6 +15,7 @@ A simple todo list application built with vanilla JavaScript. This project was c
 - Reset completed tasks when a new calendar day begins
 - Persist projects and tasks in the browser's `localStorage`
 - Responsive layout for desktop and mobile screens
+
 
 ## Data Storage
 
@@ -26,6 +30,7 @@ Completed tasks with due date = "Daily" are reset to `isCompleted: false` when t
 
 When `projectList` is empty, the app loads example personal, work, and home tasks as seed data. Existing local data is not replaced by the seed data.
 
+
 ## Project Structure
 
 ```text
@@ -39,6 +44,7 @@ src/
 ```
 
 The application uses ES modules and separates responsibilities across controllers, the data model, and views without relying on React, Vue, or another frontend framework.
+
 
 ## Technologies
 
